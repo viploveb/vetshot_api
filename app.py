@@ -59,7 +59,7 @@ def upload_file():
             # update output_logs, it contains result, location id, timestamp
             ct = datetime.datetime.now()
             log_file = open("output_logs.txt", "a")
-            log_file.write("\n"+str(ct)+"\n"+str(location_id)+"\n"+result+"\n"+ret+"\n"+filename+"\n"+"--------------------------------------------" )
+            log_file.write("\n"+str(ct)+"\n"+str(location_id)+"\n"+result+"\n"+str(ret)+"\n"+filename+"\n"+"--------------------------------------------" )
             log_file.close()
             
             #return location_id + "<br>" +  result
