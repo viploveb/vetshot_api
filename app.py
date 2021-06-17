@@ -42,6 +42,8 @@ def upload_file():
             # Image upload to s3
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) 
             upload_to_s3("./uploads/{}".format(filename),filename)
+            image_url = "https://{0}.s3.amazonaws.com/{1}".format('vethost-ocr-ejfnoancoa',filename)
+            url = {"image_url": image_url}
             
             # Rekognition output 
             output = textract_output(filename)
@@ -60,7 +62,7 @@ def upload_file():
             log_file.close()
             
             #return location_id + "<br>" +  result
-            return jsonify(location_id, ret)
+            return jsonify(location_id, url, ret)
     return render_template("index.html")
 
 if __name__ == "__main__":
