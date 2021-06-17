@@ -6,6 +6,7 @@ import datetime
 from flask_cors import CORS, cross_origin
 from textract_filter import ex
 from textract_output import textract_output
+from waitress import serve
 
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -66,4 +67,4 @@ def upload_file():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app,port='8080')
